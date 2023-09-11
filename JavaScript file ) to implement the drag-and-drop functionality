@@ -1,0 +1,20 @@
+const draggableElements = document.querySelectorAll('.draggable');
+const contentContainer = document.getElementById('content');
+
+draggableElements.forEach((element) => {
+    element.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', element.id);
+    });
+});
+
+contentContainer.addEventListener('dragover', (e) => {
+    e.preventDefault();
+});
+
+contentContainer.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData('text/plain');
+    const droppedElement = document.getElementById(data);
+    const clone = droppedElement.cloneNode(true);
+    contentContainer.appendChild(clone);
+});
