@@ -1,8 +1,0 @@
-const mongoose = require('mongoose');
-
-const contentSchema = new mongoose.Schema({
-    type: String, // "text", "image", "video", etc.
-    data: mongoose.Schema.Types.Mixed, // Store content data as needed
-});
-
-module.exports = mongoose.model('Content', contentSchema);
